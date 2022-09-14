@@ -1,0 +1,5 @@
+[INFO ] [2022-09-14 22:25:04,561] start website
+[INFO ] [2022-09-14 22:25:04,590] click to accept all cookies button
+[INFO ] [2022-09-14 22:25:37,487] click to about us link
+[INFO ] [2022-09-14 22:25:37,771] verify about us url
+[INFO ] [2022-09-14 22:25:37,794] verify about us title

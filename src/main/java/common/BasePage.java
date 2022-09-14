@@ -1,5 +1,7 @@
 package common;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
@@ -12,6 +14,8 @@ import java.util.List;
 import java.util.Set;
 
 public class BasePage {
+
+
     protected void openPageUrl(WebDriver driver, String url) {
         driver.get(url);
     }
@@ -137,6 +141,7 @@ public class BasePage {
         else
         {
             element.click();
+
         }
 
     }

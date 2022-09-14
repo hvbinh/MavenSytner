@@ -1,6 +1,8 @@
 package common;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -20,6 +22,12 @@ public class BaseTest {
     private WebDriver driver;
     private String projectFolder = System.getProperty("user.dir");
     private String osName = System.getProperty("os.name");
+    protected final  Log log;
+
+    public BaseTest()
+    {
+        log = LogFactory.getLog(getClass());
+    }
 
     protected synchronized WebDriver getBrowserDriver(String browserName) {
         // setBrowserDriver();
