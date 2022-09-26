@@ -1,8 +1,10 @@
 package common;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+//import org.apache.commons.logging.Log;
+//import org.apache.commons.logging.LogFactory;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -11,22 +13,27 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.io.FileHandler;
 import org.openqa.selenium.safari.SafariDriver;
+import org.testng.ITestResult;
 
 import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.Collections;
+import java.util.Date;
 import java.util.HashMap;
 
 public class BaseTest {
     private WebDriver driver;
     private String projectFolder = System.getProperty("user.dir");
     private String osName = System.getProperty("os.name");
-    protected final  Log log;
+    // protected final Log log;
 
-    public BaseTest()
-    {
-        log = LogFactory.getLog(getClass());
+    public BaseTest() {
+
+        //log = LogFactory.getLog(getClass());
     }
 
     protected synchronized WebDriver getBrowserDriver(String browserName) {
@@ -205,4 +212,6 @@ public class BaseTest {
             System.out.println("close browser failed " + e.toString());
         }
     }
+
+
 }
