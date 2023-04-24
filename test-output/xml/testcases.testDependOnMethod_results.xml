@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="CHROME"
+           tests="2"
+           failures="0"
+           errors="0"
+           skipped="0"
+           time="0.011">
+  <properties />
+  
+  
+            <testcase name="tc1_createUser" time="0.011" classname="testcases.testDependOnMethod" />
+                <testcase name="tc2_editUser" time="0.000" classname="testcases.testDependOnMethod" />
+      
+</testsuite>

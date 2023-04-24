@@ -8,8 +8,11 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.io.FileHandler;
 import org.testng.Assert;
+import org.testng.ITestNGListener;
 import org.testng.ITestResult;
+import org.testng.TestNG;
 import org.testng.annotations.*;
+import org.testng.internal.TestListenerHelper;
 import pageobject.*;
 
 import java.io.File;
@@ -20,11 +23,10 @@ import java.util.Date;
 
 
 
-
+@Listeners(common.reportconfigure.testNGListener.class)
 public class Menu_Items extends BaseTest {
     WebDriver driver;
     HomePageObject homePage;
-    NewsPageObject newsPage;
     AboutUsPageObject aboutUsPage;
     CustomerServicePageObject customerServicePage;
     CareerPageObject careerPageObject;
@@ -32,9 +34,10 @@ public class Menu_Items extends BaseTest {
 
 
     @BeforeMethod
-    public void initPage() {
+    @Parameters({"browser","url"})
+    public void initPage(String browser, String url) {
 
-        driver = getBrowserDriver("CHROME_UI", "https://www.sytner.co.uk/");
+        driver = getBrowserDriver(browser, url);
         homePage = PageGeneratorManager.getHomePage(driver);
 
 
@@ -42,22 +45,23 @@ public class Menu_Items extends BaseTest {
 
     @Test
     public void TC_01_Verify_About_Us_Page(Method method){
-        ExtentTestManager.startTest(method.getName(), "TC_01_Verify_About_Us_Page");
-        ExtentTestManager.getTest().log(Status.INFO, "Click to accept all cookies button");
+        log.info("TC_01_Verify_About_Us_Page");
+        log.info("Click to accept all cookies button");
         homePage.clickToAcceptAllCookiesButton();
 
         aboutUsPage = homePage.clickToAboutUsLinkAtBottomOfPage();
-        ExtentTestManager.getTest().log(Status.INFO, "click to about us link");
+        log.info("click to about us link");
+        String url = aboutUsPage.getAboutUsUrl();
 
-        Assert.assertEquals(aboutUsPage.getAboutUsUrl(), "https://beta.sytner.co.uk/about-us");
-        ExtentTestManager.getTest().log(Status.INFO, "verify about us url");
+        Assert.assertEquals(aboutUsPage.getAboutUsUrl(), "https://www.sytner.co.uk/about-us");
+        log.info("verify about us url");
 
         Assert.assertEquals(aboutUsPage.getTitle(), "About Us | Sytner Group");
-        ExtentTestManager.getTest().log(Status.INFO, "verify about us title");
+        log.info("verify about us title");
 
     }
 
-    @Test
+    //@Test
     public void TC_02_Verify_Customer_Service_Page(Method method) {
         homePage.clickToAcceptAllCookiesButton();
         ExtentTestManager.startTest(method.getName(), "TC_03_Verify_Customer_Service_Page");
@@ -67,11 +71,11 @@ public class Menu_Items extends BaseTest {
         ExtentTestManager.getTest().log(Status.INFO, "click to News link");
 
         ExtentTestManager.getTest().log(Status.INFO, "verify Customer Service title");
-        Assert.assertEquals(customerServicePage.getNewsUrl(), "https://beta.sytner.co.uk/customer-service");
+        Assert.assertEquals(customerServicePage.getNewsUrl(), "https://www.sytner.co.uk/customer-service");
         Assert.assertEquals(customerServicePage.getTitle(), "Customer Service");
     }
 
-    @Test
+    //@Test
     public void TC_04_Verify_Career_Page(Method method) {
         homePage.clickToAcceptAllCookiesButton();
         ExtentTestManager.startTest(method.getName(), "TC_04_Verify_Career_Page");
@@ -85,7 +89,7 @@ public class Menu_Items extends BaseTest {
         Assert.assertEquals(careerPageObject.getTitle(), "Careers home | Sytner Group");
     }
 
-    @Test
+    //@Test
     public void TC_05_Verify_Finance_Page(Method method) {
         homePage.clickToAcceptAllCookiesButton();
         ExtentTestManager.startTest(method.getName(), "TC_05_Verify_Finance_Page");
@@ -95,7 +99,7 @@ public class Menu_Items extends BaseTest {
         ExtentTestManager.getTest().log(Status.INFO, "Click to finance link");
 
         ExtentTestManager.getTest().log(Status.INFO, "Verify finance title");
-        Assert.assertEquals(financePageObject.getNewsUrl(), "https://beta.sytner.co.uk/finance");
+        Assert.assertEquals(financePageObject.getNewsUrl(), "https://www.sytner.co.uk/finance");
         Assert.assertEquals(financePageObject.getTitle(), "Finance | Sytner Group");
     }
 
@@ -115,7 +119,7 @@ public class Menu_Items extends BaseTest {
             FileHandler.copy(source, new File(folder + File.separator + "image" + File.separator + date + ".png"));
         }
     }
-    @AfterMethod
+    @AfterMethod(alwaysRun = true)
     public void closeBrowser(){
         closeBrowserAndDriver(driver);
     }

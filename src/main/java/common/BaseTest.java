@@ -1,8 +1,9 @@
 package common;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-//import org.apache.commons.logging.Log;
-//import org.apache.commons.logging.LogFactory;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -24,16 +25,17 @@ import java.time.Duration;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.concurrent.TimeUnit;
 
-public class BaseTest {
+public abstract class BaseTest {
     private WebDriver driver;
     private String projectFolder = System.getProperty("user.dir");
     private String osName = System.getProperty("os.name");
-    // protected final Log log;
+    protected final Log log;
 
-    public BaseTest() {
-
-        //log = LogFactory.getLog(getClass());
+    protected BaseTest()
+    {
+        log = LogFactory.getLog(getClass());
     }
 
     protected synchronized WebDriver getBrowserDriver(String browserName) {
@@ -122,9 +124,12 @@ public class BaseTest {
             throw new RuntimeException("please input valid browser name");
         }
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(GlobalConstants.SHORT_TIME));
+        //driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(GlobalConstants.getGlobalConstants().getSHORT_TIME()));
+        driver.manage().timeouts().implicitlyWait(GlobalConstants.getGlobalConstants().getSHORT_TIME(),TimeUnit.SECONDS);
 
         driver.get("http://demo.nopcommerce.com/");
+
+
 
         return driver;
     }
@@ -133,8 +138,10 @@ public class BaseTest {
         // setBrowserDriver();
         Browser browser = Browser.valueOf(browserName.toUpperCase());
         if (browser == Browser.CHROME_UI) {
+            ChromeOptions options = new ChromeOptions();
+            options.addArguments("--remote-allow-origins=*");
             WebDriverManager.chromedriver().setup(); // .driverVersion("86.0.4240.22").setup();
-            driver = new ChromeDriver();
+            driver = new ChromeDriver(options);
         } else if (browser == Browser.FIREFOX_UI) {
             WebDriverManager.firefoxdriver().setup();
             driver = new FirefoxDriver();
@@ -153,18 +160,23 @@ public class BaseTest {
             options.setHeadless(true);
             options.addArguments("window-size=1920x1080");
             driver = new FirefoxDriver(options);
-        } else {
+        }else if (browser == Browser.SAFARI) {
+            driver = new SafariDriver();
+        }
+        else {
             throw new RuntimeException("please input valid browser name");
         }
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(GlobalConstants.SHORT_TIME));
-
+        //driver.manage().window().maximize();
+        //driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(GlobalConstants.getGlobalConstants().getSHORT_TIME()));
+        driver.manage().timeouts().implicitlyWait(GlobalConstants.getGlobalConstants().getSHORT_TIME(), TimeUnit.SECONDS);
+        //driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(GlobalConstants.getGlobalConstants().getSHORT_TIME()));
+        driver.manage().timeouts().pageLoadTimeout(GlobalConstants.getGlobalConstants().getLONG_TIME(),TimeUnit.SECONDS);
         driver.get(url);
 
         return driver;
     }
 
-    public WebDriver getDriver() {
+    public WebDriver getWebDriver() {
         return driver;
     }
 

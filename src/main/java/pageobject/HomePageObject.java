@@ -2,7 +2,10 @@ package pageobject;
 
 import common.BasePage;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import pageui.HomePageUI;
+
+import java.util.List;
 
 public class HomePageObject extends BasePage {
     WebDriver driver;
@@ -12,14 +15,31 @@ public class HomePageObject extends BasePage {
     }
 
     public void clickToAcceptAllCookiesButton() {
-        waitToElementClickable(driver, HomePageUI.ACCEPT_ALL_COOKIES_BUTTON);
-        clickToElement(driver, HomePageUI.ACCEPT_ALL_COOKIES_BUTTON);
+        List <WebElement> elements = getElements(driver, HomePageUI.ACCEPT_ALL_COOKIES_BUTTON);
+        if(elements.size()!=0)
+        {
+            //waitToElementClickable(driver, HomePageUI.ACCEPT_ALL_COOKIES_BUTTON);
+            clickToElementByJS(driver, HomePageUI.ACCEPT_ALL_COOKIES_BUTTON);
+        }
+        else
+        {
+            System.out.println("Cookies button is not displayed");
+        }
+
     }
 
     public AboutUsPageObject clickToAboutUsLinkAtBottomOfPage() {
-        waitToElementClickable(driver, HomePageUI.ABOUT_US_LINK);
-        scrollToElement(driver, HomePageUI.ABOUT_US_LINK);
-        clickToElement(driver, HomePageUI.ABOUT_US_LINK);
+        if(driver.toString().contains("Safari"))
+        {
+            waitToElementClickable(driver, HomePageUI.ABOUT_US_LINK);
+            clickToElementByJS(driver, HomePageUI.ABOUT_US_LINK);
+        }
+        else
+        {
+            waitToElementClickable(driver, HomePageUI.ABOUT_US_LINK);
+            scrollToElement(driver, HomePageUI.ABOUT_US_LINK);
+            clickToElementByJS(driver, HomePageUI.ABOUT_US_LINK);
+        }
         return PageGeneratorManager.getAboutUsPage(driver);
     }
 

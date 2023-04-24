@@ -1,16 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="All Test Suite">
+<suite name="All Test Suite" parallel="false" thread-count="2">
 
     <listeners>
-        <listener class-name="common.reportconfigure.ExtentTestListener"></listener>
+<!--        <listener class-name="common.reportconfigure.ExtentTestListener"></listener>-->
+            <listener class-name="org.uncommons.reportng.HTMLReporter"></listener>
+            <listener class-name="org.uncommons.reportng.JUnitXMLReporter"></listener>
+<!--            <listener class-name="common.reportconfigure.testNGListener"></listener>-->
     </listeners>
 
-    <test verbose="2" preserve-order="true" name="MavenSytner">
+    <test verbose="2" preserve-order="true" name="CHROME">
+        <parameter name="browser" value="CHROME_UI"/>
+        <parameter name="url" value="https://www.sytner.co.uk/"/>
         <classes>
-            <class name="testcases.Menu_Items">
-
-            </class>
+            <class name="testcases.Menu_Items"/>
+<!--            <class name="testcases.testDependOnMethod"/>-->
+        </classes>
+    </test>
+<!--    <test verbose="2" preserve-order="true" name="SAFARI">-->
+<!--        <parameter name="browser" value="SAFARI"/>-->
+<!--        <parameter name="url" value="https://www.sytner.co.uk/"/>-->
+<!--        <classes>-->
+<!--            <class name="testcases.Menu_Items">-->
+<!--                <methods>-->
+<!--                    <include name="TC_01_Verify_About_Us_Page"/>-->
+<!--                </methods>-->
+<!--            </class>-->
+<!--        </classes>-->
+<!--    </test>-->
+    <test verbose="2" preserve-order="true" name="FIREFOX">
+        <parameter name="browser" value="FIREFOX_UI"/>
+        <parameter name="url" value="https://www.sytner.co.uk/"/>
+        <classes>
+            <class name="testcases.Menu_Items"/>
+            <!--            <class name="testcases.testDependOnMethod"/>-->
         </classes>
     </test>
 </suite>

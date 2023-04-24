@@ -1,0 +1,5 @@
+[INFO ] [2023-04-14 14:13:27,355] TC_01_Verify_About_Us_Page
+[INFO ] [2023-04-14 14:13:27,356] Click to accept all cookies button
+[INFO ] [2023-04-14 14:13:40,064] click to about us link
+[INFO ] [2023-04-14 14:13:50,117] verify about us url
+[INFO ] [2023-04-14 14:13:50,126] verify about us title

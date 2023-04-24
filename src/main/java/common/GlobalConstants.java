@@ -1,14 +1,55 @@
 package common;
 
 public class GlobalConstants {
-    public static final long SHORT_TIME = 30;
-    public static final long LONG_TIME = 60;
-    public static final String ROOT_FOLDER = System.getProperty("user.dir");
-    public static final String OS_NAME = System.getProperty("os.name");
-    public static final String JAVA_VERSION = System.getProperty("java.version");
 
-//    public static final String DOWNLOAD_FOLDER = ROOT_FOLDER + getDirectorySlash("downloadFiles");
-//    public static final String UPLOAD_FOLDER = ROOT_FOLDER + getDirectorySlash("uploadFiles");
+    //private static variable
+    private static GlobalConstants globalConstants;
+
+    //private constructor
+    private GlobalConstants()
+    {
+
+    }
+
+    //public static method
+
+
+    private final long SHORT_TIME = 30;
+
+    public static synchronized GlobalConstants getGlobalConstants() {
+        if(globalConstants == null)
+        {
+            globalConstants = new GlobalConstants();
+        }
+        return globalConstants;
+    }
+
+    public long getSHORT_TIME() {
+        return SHORT_TIME;
+    }
+
+    public long getLONG_TIME() {
+        return LONG_TIME;
+    }
+
+    public String getROOT_FOLDER() {
+        return ROOT_FOLDER;
+    }
+
+    public String getOS_NAME() {
+        return OS_NAME;
+    }
+
+    public String getJAVA_VERSION() {
+        return JAVA_VERSION;
+    }
+
+    private final long LONG_TIME = 60;
+    private final String ROOT_FOLDER = System.getProperty("user.dir");
+    private final String OS_NAME = System.getProperty("os.name");
+    private final String JAVA_VERSION = System.getProperty("java.version");
+
+
 
 
     public static String getDirectorySlash(String folderName) {
@@ -21,18 +62,18 @@ public class GlobalConstants {
     }
 
     public static boolean isWindows() {
-        return (GlobalConstants.OS_NAME.toLowerCase().indexOf("win") >= 0);
+        return (globalConstants.OS_NAME.toLowerCase().indexOf("win") >= 0);
     }
 
     public static boolean isMac() {
-        return (GlobalConstants.OS_NAME.toLowerCase().indexOf("mac") >= 0);
+        return (globalConstants.OS_NAME.toLowerCase().indexOf("mac") >= 0);
     }
 
     public static boolean isUnix() {
-        return (GlobalConstants.OS_NAME.toLowerCase().indexOf("nix") >= 0 || GlobalConstants.OS_NAME.toLowerCase().indexOf("nux") >= 0 || GlobalConstants.OS_NAME.toLowerCase().indexOf("aix") > 0);
+        return (globalConstants.OS_NAME.toLowerCase().indexOf("nix") >= 0 || globalConstants.OS_NAME.toLowerCase().indexOf("nux") >= 0 || globalConstants.OS_NAME.toLowerCase().indexOf("aix") > 0);
     }
 
     public static boolean isSolaris() {
-        return (GlobalConstants.OS_NAME.toLowerCase().indexOf("sunos") >= 0);
+        return (globalConstants.OS_NAME.toLowerCase().indexOf("sunos") >= 0);
     }
 }

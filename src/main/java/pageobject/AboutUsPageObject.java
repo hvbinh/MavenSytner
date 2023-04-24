@@ -23,6 +23,7 @@ public class AboutUsPageObject extends BasePage {
     }
 
     public String getAboutUsUrl() {
+        sleepInSecond(5);
         return getCurrentPageUrl(driver);
     }
 

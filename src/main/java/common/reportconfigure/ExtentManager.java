@@ -9,7 +9,7 @@ public class ExtentManager {
 	public static final ExtentReports extentReports = new ExtentReports();
 
 	public synchronized static ExtentReports createExtentReports() {
-		ExtentSparkReporter reporter = new ExtentSparkReporter(GlobalConstants.ROOT_FOLDER + "/extentV5/ExtentReport.html");
+		ExtentSparkReporter reporter = new ExtentSparkReporter(GlobalConstants.getGlobalConstants().getROOT_FOLDER() + "/extentV5/ExtentReport.html");
 		reporter.config().setReportName("Sytner HTML Report");
 		reporter.config().setDocumentTitle("Sytner HTML Report");
 		reporter.config().setTimelineEnabled(true);
@@ -19,7 +19,7 @@ public class ExtentManager {
 		extentReports.attachReporter(reporter);
 		extentReports.setSystemInfo("Project", "Sytner");
 		extentReports.setSystemInfo("Team", "VN");
-		extentReports.setSystemInfo("JDK version", GlobalConstants.JAVA_VERSION);
+		extentReports.setSystemInfo("JDK version", GlobalConstants.getGlobalConstants().getJAVA_VERSION());
 		return extentReports;
 	}
 }
