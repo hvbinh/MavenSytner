@@ -12,10 +12,6 @@ public class GlobalConstants {
     }
 
     //public static method
-
-
-    private final long SHORT_TIME = 30;
-
     public static synchronized GlobalConstants getGlobalConstants() {
         if(globalConstants == null)
         {
@@ -23,7 +19,7 @@ public class GlobalConstants {
         }
         return globalConstants;
     }
-
+    private final long SHORT_TIME = 30;
     public long getSHORT_TIME() {
         return SHORT_TIME;
     }

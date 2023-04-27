@@ -1,4 +1,0 @@
-download project
-open by IntelliJ
-Right click on project then click 'add framework support', select Maven
-Open testng.xml, right click then select run
