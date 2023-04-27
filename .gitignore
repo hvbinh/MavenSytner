@@ -1,5 +1,7 @@
-.idea
+.idea/
+target/
+test-output/
 *.html
-*.class
 *.log
 *.text
+.class
