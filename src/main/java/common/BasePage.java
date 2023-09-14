@@ -66,7 +66,7 @@ public abstract class BasePage {
 
     protected void waitAlertPresence(WebDriver driver) {
         //explicitWait = new WebDriverWait(driver, Duration.ofSeconds(GlobalConstants.getGlobalConstants().getSHORT_TIME()));
-        explicitWait = new WebDriverWait(driver, (GlobalConstants.getGlobalConstants().getSHORT_TIME()));
+        explicitWait = new WebDriverWait(driver, Duration.ofSeconds(GlobalConstants.getGlobalConstants().getSHORT_TIME()));
         explicitWait.until(ExpectedConditions.alertIsPresent());
     }
 
@@ -200,7 +200,7 @@ public abstract class BasePage {
         getElement(driver, parentXpath).click();
         sleepInSecond(1);
         //explicitWait = new WebDriverWait(driver, Duration.ofSeconds(GlobalConstants.getGlobalConstants().getSHORT_TIME()));
-        explicitWait = new WebDriverWait(driver, GlobalConstants.getGlobalConstants().getSHORT_TIME());
+        explicitWait = new WebDriverWait(driver, Duration.ofSeconds(GlobalConstants.getGlobalConstants().getSHORT_TIME()));
         explicitWait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(getByXpath(childXpath)));
 
         elements = getElements(driver, childXpath);
@@ -410,7 +410,7 @@ public abstract class BasePage {
 
     protected boolean areJQueryAndJSLoadedSuccess(WebDriver driver) {
         //explicitWait = new WebDriverWait(driver, Duration.ofSeconds(GlobalConstants.getGlobalConstants().getSHORT_TIME()));
-        explicitWait = new WebDriverWait(driver, GlobalConstants.getGlobalConstants().getSHORT_TIME());
+        explicitWait = new WebDriverWait(driver, Duration.ofSeconds(GlobalConstants.getGlobalConstants().getSHORT_TIME()));
         jsExecutor = (JavascriptExecutor) driver;
 
         ExpectedCondition<Boolean> jQueryLoad = new ExpectedCondition <Boolean>() {
@@ -449,7 +449,7 @@ public abstract class BasePage {
     protected void waitToElementVisible(WebDriver driver, String locator) {
 
         //explicitWait = new WebDriverWait(driver, Duration.ofSeconds(GlobalConstants.getGlobalConstants().getSHORT_TIME()));
-        explicitWait = new WebDriverWait(driver, GlobalConstants.getGlobalConstants().getSHORT_TIME());
+        explicitWait = new WebDriverWait(driver, Duration.ofSeconds(GlobalConstants.getGlobalConstants().getSHORT_TIME()));
 
         explicitWait.until(ExpectedConditions.visibilityOfElementLocated(getByXpath(locator)));
 
@@ -457,13 +457,13 @@ public abstract class BasePage {
 
     protected void waitToElementVisible(WebDriver driver, String locator, String... values) {
         //explicitWait = new WebDriverWait(driver, Duration.ofSeconds(GlobalConstants.getGlobalConstants().getSHORT_TIME()));
-        explicitWait = new WebDriverWait(driver, GlobalConstants.getGlobalConstants().getSHORT_TIME());
+        explicitWait = new WebDriverWait(driver, Duration.ofSeconds(GlobalConstants.getGlobalConstants().getSHORT_TIME()));
         explicitWait.until(ExpectedConditions.visibilityOfElementLocated(getByXpath(getDynamicLocator(locator, values))));
     }
 
     protected void waitToElementInvisible(WebDriver driver, String locator) {
         //explicitWait = new WebDriverWait(driver, Duration.ofSeconds(GlobalConstants.getGlobalConstants().getSHORT_TIME()));
-        explicitWait = new WebDriverWait(driver, GlobalConstants.getGlobalConstants().getSHORT_TIME());
+        explicitWait = new WebDriverWait(driver, Duration.ofSeconds(GlobalConstants.getGlobalConstants().getSHORT_TIME()));
         overrideImplicitWait(driver, GlobalConstants.getGlobalConstants().getSHORT_TIME());
         explicitWait.until(ExpectedConditions.invisibilityOfElementLocated(getByXpath(locator)));
         overrideImplicitWait(driver, GlobalConstants.getGlobalConstants().getSHORT_TIME());
@@ -471,19 +471,19 @@ public abstract class BasePage {
 
     protected void waitToElementInvisible(WebDriver driver, String locator, String... values) {
         //explicitWait = new WebDriverWait(driver, Duration.ofSeconds(GlobalConstants.getGlobalConstants().getSHORT_TIME()));
-        explicitWait = new WebDriverWait(driver, GlobalConstants.getGlobalConstants().getSHORT_TIME());
+        explicitWait = new WebDriverWait(driver, Duration.ofSeconds(GlobalConstants.getGlobalConstants().getSHORT_TIME()));
         explicitWait.until(ExpectedConditions.invisibilityOfElementLocated(getByXpath(getDynamicLocator(locator, values))));
     }
 
     protected void waitToElementClickable(WebDriver driver, String locator) {
         //explicitWait = new WebDriverWait(driver, Duration.ofSeconds(GlobalConstants.getGlobalConstants().getSHORT_TIME()));
-        explicitWait = new WebDriverWait(driver, GlobalConstants.getGlobalConstants().getSHORT_TIME());
+        explicitWait = new WebDriverWait(driver, Duration.ofSeconds(GlobalConstants.getGlobalConstants().getSHORT_TIME()));
         explicitWait.until(ExpectedConditions.elementToBeClickable(getByXpath(locator)));
     }
 
     protected void waitToElementClickable(WebDriver driver, String locator, String... values) {
         //explicitWait = new WebDriverWait(driver, Duration.ofSeconds(GlobalConstants.getGlobalConstants().getSHORT_TIME()));
-        explicitWait = new WebDriverWait(driver, GlobalConstants.getGlobalConstants().getSHORT_TIME());
+        explicitWait = new WebDriverWait(driver, Duration.ofSeconds(GlobalConstants.getGlobalConstants().getSHORT_TIME()));
         explicitWait.until(ExpectedConditions.elementToBeClickable(getByXpath(getDynamicLocator(locator, values))));
     }
 

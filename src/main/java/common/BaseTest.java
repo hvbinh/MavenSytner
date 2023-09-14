@@ -167,10 +167,10 @@ public abstract class BaseTest {
             throw new RuntimeException("please input valid browser name");
         }
         //driver.manage().window().maximize();
-        //driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(GlobalConstants.getGlobalConstants().getSHORT_TIME()));
-        driver.manage().timeouts().implicitlyWait(GlobalConstants.getGlobalConstants().getSHORT_TIME(), TimeUnit.SECONDS);
-        //driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(GlobalConstants.getGlobalConstants().getSHORT_TIME()));
-        driver.manage().timeouts().pageLoadTimeout(GlobalConstants.getGlobalConstants().getLONG_TIME(),TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(GlobalConstants.getGlobalConstants().getSHORT_TIME()));
+        //driver.manage().timeouts().implicitlyWait(GlobalConstants.getGlobalConstants().getSHORT_TIME(), TimeUnit.SECONDS);
+        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(GlobalConstants.getGlobalConstants().getLONG_TIME()));
+        //driver.manage().timeouts().pageLoadTimeout(GlobalConstants.getGlobalConstants().getLONG_TIME(),TimeUnit.SECONDS);
         driver.get(url);
 
         return driver;
