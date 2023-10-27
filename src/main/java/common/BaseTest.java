@@ -2,10 +2,6 @@ package common;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.openqa.selenium.By;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -14,28 +10,24 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.ie.InternetExplorerDriver;
-import org.openqa.selenium.io.FileHandler;
 import org.openqa.selenium.safari.SafariDriver;
-import org.testng.ITestResult;
 
 import java.io.File;
-import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.Collections;
-import java.util.Date;
 import java.util.HashMap;
-import java.util.concurrent.TimeUnit;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public abstract class BaseTest {
     private WebDriver driver;
     private String projectFolder = System.getProperty("user.dir");
     private String osName = System.getProperty("os.name");
-    protected final Log log;
+    protected final Logger log;
 
     protected BaseTest()
     {
-        log = LogFactory.getLog(getClass());
+        log = LogManager.getLogger(getClass());
     }
 
     protected synchronized WebDriver getBrowserDriver(String browserName) {
@@ -124,8 +116,8 @@ public abstract class BaseTest {
             throw new RuntimeException("please input valid browser name");
         }
         driver.manage().window().maximize();
-        //driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(GlobalConstants.getGlobalConstants().getSHORT_TIME()));
-        driver.manage().timeouts().implicitlyWait(GlobalConstants.getGlobalConstants().getSHORT_TIME(),TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(GlobalConstants.getGlobalConstants().getSHORT_TIME()));
+        //driver.manage().timeouts().implicitlyWait(GlobalConstants.getGlobalConstants().getSHORT_TIME(),TimeUnit.SECONDS);
 
         driver.get("http://demo.nopcommerce.com/");
 

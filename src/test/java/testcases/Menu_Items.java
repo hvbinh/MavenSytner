@@ -36,18 +36,15 @@ public class Menu_Items extends BaseTest {
     @BeforeMethod
     @Parameters({"browser","url"})
     public void initPage(String browser, String url) {
-
         driver = getBrowserDriver(browser, url);
         homePage = PageGeneratorManager.getHomePage(driver);
-
-
     }
 
     @Test
     public void TC_01_Verify_About_Us_Page(Method method){
         log.info("TC_01_Verify_About_Us_Page");
         log.info("Click to accept all cookies button");
-        homePage.clickToAcceptAllCookiesButton();
+        //homePage.clickToAcceptAllCookiesButton();
 
         aboutUsPage = homePage.clickToAboutUsLinkAtBottomOfPage();
         log.info("click to about us link");
