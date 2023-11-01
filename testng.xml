@@ -14,7 +14,7 @@
         <parameter name="url" value="https://www.sytner.co.uk/"/>
         <classes>
             <class name="testcases.Menu_Items"/>
-<!--            <class name="testcases.testDependOnMethod"/>-->
+<!--            <class name="testcases.DownloadFunction"/>-->
         </classes>
     </test>
 <!--    <test verbose="2" preserve-order="true" name="SAFARI">-->

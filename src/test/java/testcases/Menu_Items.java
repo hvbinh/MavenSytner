@@ -95,6 +95,8 @@ public class Menu_Items extends BaseTest {
         Assert.assertEquals(financePageObject.getTitle(), "Finance | Sytner Group");
     }
 
+
+
     public void takeScreenShot(ITestResult result) throws IOException {
         if (ITestResult.FAILURE == result.getStatus()) {
             TakesScreenshot ts = (TakesScreenshot) driver;
