@@ -504,6 +504,19 @@ public abstract class BasePage {
         //driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     }
+    protected void test(WebDriver driver)
+    {
+        WebDriverWait eWait = new WebDriverWait(driver, Duration.ofSeconds(30000));
+        eWait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("")));
+        eWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("")));
+    }
+    protected void test1(WebDriver driver)
+    {
+        WebDriverWait iWait = new WebDriverWait(driver, Duration.ofSeconds(30000));
+        driver.findElement(By.xpath("")).isEnabled();
+
+
+    }
     private List<WebElement> elements;
     private WebDriverWait explicitWait;
     private WebElement element;
