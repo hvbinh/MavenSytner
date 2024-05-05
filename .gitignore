@@ -1,0 +1,8 @@
+.idea/*
+.idea/vcs.xml
+test-output
+ReportNGScreenShots
+*.html
+logs
+test-output/html/suites.html
+*.html

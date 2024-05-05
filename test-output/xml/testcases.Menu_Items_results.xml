@@ -4,10 +4,10 @@
            failures="0"
            errors="0"
            skipped="0"
-           time="13.913">
+           time="21.668">
   <properties />
   
   
-            <testcase name="TC_01_Verify_About_Us_Page" time="13.913" classname="testcases.Menu_Items" />
+            <testcase name="TC_01_Verify_About_Us_Page" time="21.668" classname="testcases.Menu_Items" />
       
 </testsuite>
