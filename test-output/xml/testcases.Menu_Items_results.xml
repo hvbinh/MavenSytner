@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="/Users/hvbinh/Person/MavenSytner"
+           tests="1"
+           failures="0"
+           errors="0"
+           skipped="0"
+           time="13.913">
+  <properties />
+  
+  
+            <testcase name="TC_01_Verify_About_Us_Page" time="13.913" classname="testcases.Menu_Items" />
+      
+</testsuite>

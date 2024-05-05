@@ -1,0 +1,4 @@
+[05-05-2024 23:28:10.425 INFO testcases.Menu_Items] - start website
+[05-05-2024 23:28:10.454 INFO testcases.Menu_Items] - click to accept all cookies button
+[05-05-2024 23:28:21.548 INFO testcases.Menu_Items] - click to about us link
+[05-05-2024 23:28:22.016 INFO testcases.Menu_Items] - verify about us url
