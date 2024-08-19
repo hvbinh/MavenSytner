@@ -1,11 +1,4 @@
-.idea
-logs
-target/
-
-*.log
-.html
-test-output/xml/testcases.Menu_Items_results.xml
-test-output/xml/testcases.Menu_Items_results.xml
-test-output/html/suites.html
-test-output/html/suite1_test1_results.html
-test-output/html/suite1_test1_results.html
+/.idea/
+/logs/
+/target/
+/target/classes/common/*.class
