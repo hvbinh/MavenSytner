@@ -1,7 +1,6 @@
 package common;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.apache.commons.logging.Log;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -11,7 +10,6 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.safari.SafariDriver;
-
 import java.io.File;
 import java.time.Duration;
 import java.util.Collections;
@@ -24,7 +22,6 @@ public abstract class BaseTest {
     private String projectFolder = System.getProperty("user.dir");
     private String osName = System.getProperty("os.name");
     protected final Logger log;
-
     protected BaseTest()
     {
         log = LogManager.getLogger(getClass());
@@ -117,7 +114,6 @@ public abstract class BaseTest {
         }
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(GlobalConstants.getGlobalConstants().getSHORT_TIME()));
-        //driver.manage().timeouts().implicitlyWait(GlobalConstants.getGlobalConstants().getSHORT_TIME(),TimeUnit.SECONDS);
 
         driver.get("http://demo.nopcommerce.com/");
 
@@ -132,7 +128,7 @@ public abstract class BaseTest {
         if (browser == Browser.CHROME_UI) {
             ChromeOptions options = new ChromeOptions();
             options.addArguments("--remote-allow-origins=*");
-            WebDriverManager.chromedriver().setup(); // .driverVersion("86.0.4240.22").setup();
+            WebDriverManager.chromedriver().setup();
             driver = new ChromeDriver(options);
         } else if (browser == Browser.FIREFOX_UI) {
             WebDriverManager.firefoxdriver().setup();
@@ -158,11 +154,8 @@ public abstract class BaseTest {
         else {
             throw new RuntimeException("please input valid browser name");
         }
-        //driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(GlobalConstants.getGlobalConstants().getSHORT_TIME()));
-        //driver.manage().timeouts().implicitlyWait(GlobalConstants.getGlobalConstants().getSHORT_TIME(), TimeUnit.SECONDS);
         driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(GlobalConstants.getGlobalConstants().getLONG_TIME()));
-        //driver.manage().timeouts().pageLoadTimeout(GlobalConstants.getGlobalConstants().getLONG_TIME(),TimeUnit.SECONDS);
         driver.get(url);
 
         return driver;
