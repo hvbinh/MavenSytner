@@ -49,7 +49,7 @@ public class Menu_Items extends BaseTest {
         log.info("verify about us url");
 
         Assert.assertEquals(aboutUsPage.getTitle(), "About Sytner Group | Sytner Group");
-        log.info("verify about us title");
+        log.info("verify about us title main branch");
 
     }
 
