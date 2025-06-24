@@ -39,7 +39,6 @@ public class Menu_Items extends BaseTest {
     }
 
     @Test
-    @Severity(SeverityLevel.NORMAL)
     public void TC_01_Verify_About_Us_Page(Method method) {
         log.info("TC_01_Verify_About_Us_Page");
         log.info("Click to accept all cookies button");
