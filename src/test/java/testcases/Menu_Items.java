@@ -10,6 +10,7 @@ import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
 import pageobject.*;
+import reportconfigure.AllureTestListener;
 
 import java.io.File;
 import java.io.IOException;
@@ -18,7 +19,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 
-//@Listeners(common.reportconfigure.testNGListener.class)
+@Listeners(AllureTestListener.class)
 public class Menu_Items extends BaseTest {
     WebDriver driver;
     HomePageObject homePage;
