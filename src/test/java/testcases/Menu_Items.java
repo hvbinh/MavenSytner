@@ -2,6 +2,8 @@ package testcases;
 
 
 import common.BaseTest;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -37,6 +39,7 @@ public class Menu_Items extends BaseTest {
     }
 
     @Test
+    @Severity(SeverityLevel.NORMAL)
     public void TC_01_Verify_About_Us_Page(Method method) {
         log.info("TC_01_Verify_About_Us_Page");
         log.info("Click to accept all cookies button");
