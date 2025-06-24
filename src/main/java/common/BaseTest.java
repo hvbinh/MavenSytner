@@ -161,7 +161,7 @@ public abstract class BaseTest {
         return driver;
     }
 
-    public WebDriver getWebDriver() {
+    public WebDriver getDriver() {
         return driver;
     }
 

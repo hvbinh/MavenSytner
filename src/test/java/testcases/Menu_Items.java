@@ -48,8 +48,8 @@ public class Menu_Items extends BaseTest {
         Assert.assertEquals(aboutUsPage.getAboutUsUrl(), "https://www.sytner.co.uk/about-us");
         log.info("verify about us url");
 
-        Assert.assertEquals(aboutUsPage.getTitle(), "About Sytner Group | Sytner Group");
-        log.info("verify about us title test1 branch");
+        Assert.assertEquals(aboutUsPage.getTitle(), "About Us | Sytner Group");
+        log.info("verify about us title");
 
     }
 
