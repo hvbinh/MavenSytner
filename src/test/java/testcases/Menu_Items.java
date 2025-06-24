@@ -19,7 +19,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 
-@Listeners(AllureTestListener.class)
+//@Listeners(AllureTestListener.class)
 public class Menu_Items extends BaseTest {
     WebDriver driver;
     HomePageObject homePage;
