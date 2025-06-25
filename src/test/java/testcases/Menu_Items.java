@@ -4,6 +4,7 @@ package testcases;
 import common.BaseTest;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.testng.AllureTestNg;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -30,13 +31,13 @@ public class Menu_Items extends BaseTest {
     CareerPageObject careerPageObject;
     FinancePageObject financePageObject;
 
-
     @BeforeMethod
     @Parameters({"browser", "url"})
     public void initPage(String browser, String url) {
         driver = getBrowserDriver(browser, url);
         homePage = PageGeneratorManager.getHomePage(driver);
     }
+
 
     @Test
     public void TC_01_Verify_About_Us_Page(Method method) {
